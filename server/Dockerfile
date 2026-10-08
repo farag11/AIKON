@@ -29,7 +29,7 @@ RUN go vet ./... && go test -count=1 ./... \
  && CGO_ENABLED=0 go build -trimpath -ldflags "-s -w -buildid=" -o /out/claude-s40-server . \
  && mkdir -p /out/data \
  && mkdir -p /out/certs \
- && openssl req -x509 -newkey rsa:4096 -keyout /out/certs/server-key.pem -out /out/certs/server-chain.pem -days 365 -nodes -subj "/CN=localhost"
+ && openssl req -x509 -newkey rsa:4096 -keyout /out/certs/server.key -out /out/certs/server-chain.pem -days 365 -nodes -subj "/CN=localhost"
 
 # Final Stage
 FROM gcr.io/distroless/static-debian12:nonroot@sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab
